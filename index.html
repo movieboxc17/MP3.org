@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MP3 Auto-Play Pop-up Player</title>
+  <style>
+    /* CSS for the pop-up overlay */
+    #popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 1000;
+    }
+
+    /* CSS for the pop-up box */
+    #popup-box {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: #fff;
+      padding: 20px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+      z-index: 1001;
+    }
+  </style>
+</head>
+<body>
+  <!-- Trigger the button click event automatically -->
+  <script>
+    window.addEventListener('DOMContentLoaded', function() {
+      document.getElementById('openButton').click();
+    });
+
+    // Reference to the new window
+    var newWindow;
+
+    function openPopup() {
+      var popupOverlay = document.getElementById("popup-overlay");
+      popupOverlay.style.display = "block";
+    }
+
+    function closePopup() {
+      var popupOverlay = document.getElementById("popup-overlay");
+      popupOverlay.style.display = "none";
+      
+      // Open a new window with the same MP3 playing
+      newWindow = window.open('site.html', '_blank');
+    }
+
+    // Close the new window if the original window is closed
+    window.addEventListener('beforeunload', function() {
+      if (newWindow) {
+        newWindow.close();
+      }
+    });
+  </script>
+
+  <!-- The pop-up overlay -->
+  <div id="popup-overlay">
+    <!-- The pop-up box -->
+    <div id="popup-box">
+      <audio autoplay controls>
+        <source src="your-audio.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+      </audio>
+      <button onclick="closePopup()">Close</button>
+    </div>
+  </div>
+
+  <!-- The hidden button that triggers the pop-up -->
+  <button id="openButton" style="display: none;" onclick="openPopup()">Open MP3 Player</button>
+</body>
+</html>
