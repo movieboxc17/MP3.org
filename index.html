@@ -41,22 +41,19 @@
     function openPopup() {
       var popupOverlay = document.getElementById("popup-overlay");
       popupOverlay.style.display = "block";
+      // Store the pop-up state in session storage
+      sessionStorage.setItem('popupOpen', 'true');
     }
 
     function closePopup() {
       var popupOverlay = document.getElementById("popup-overlay");
       popupOverlay.style.display = "none";
+      // Remove the pop-up state from session storage
+      sessionStorage.removeItem('popupOpen');
       
-      // Open a new window with the same MP3 playing
-      newWindow = window.open('site.html', '_blank');
+      // Open a new window with the same URL
+      newWindow = window.open(window.location.href, '_blank');
     }
-
-    // Close the new window if the original window is closed
-    window.addEventListener('beforeunload', function() {
-      if (newWindow) {
-        newWindow.close();
-      }
-    });
   </script>
 
   <!-- The pop-up overlay -->
@@ -64,7 +61,7 @@
     <!-- The pop-up box -->
     <div id="popup-box">
       <audio autoplay controls>
-        <source src="hit1-endermen.mp3" type="audio/mpeg">
+        <source src="your-audio.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
       </audio>
       <button onclick="closePopup()">Close</button>
